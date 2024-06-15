@@ -108,8 +108,17 @@ void Add(Food_List& L) {
 		else {
 			cout << "Khong co mon an nay!" << endl;
 		}
-		cout << "Ban co muon them mon an khac khong? (Co/Khong): ";
-		cin >> x;
+
+		do {
+			cout << "Ban co muon them mon an khac khong? (Co/Khong): ";
+			cin >> x;
+
+			if (x != "Co" && x != "co" && x != "Khong" && x != "khong") {
+				cout << "Chi duoc nhap 'Co' hoac 'Khong'! Vui long nhap lai.\n";
+			}
+		} while (x != "Co" && x != "co" && x != "Khong" && x != "khong");
+
+
 	} while (x == "Co" || x == "co");
 }
 
@@ -152,8 +161,14 @@ void Delete(Food_List& L, Node_Mon_An* P) {
 			}
 		}
 
-		cout << "Ban co muon xoa them mon an khac khong? (Co/Khong): ";
-		cin >> x;
+		do {
+			cout << "Ban co muon xoa them mon an khac khong? (Co/Khong): ";
+			cin >> x;
+
+			if (x != "Co" && x != "co" && x != "Khong" && x != "khong") {
+				cout << "Chi duoc nhap 'Co' hoac 'Khong'! Vui long nhap lai.\n";
+			}
+		} while (x != "Co" && x != "co" && x != "Khong" && x != "khong");
 
 		if (x == "Co" || x == "co") {
 			int stt;
@@ -194,9 +209,16 @@ void Change(Food_List& L, int stt, int soluong_change) {
 			cout << "Khong co mon an voi stt nay trong danh sach\n";
 		}
 
-		cout << "Ban co muon thay doi mon an nao khac khong? (Co/Khong): ";
-		cin >> x;
+		do {
+			cout << "Ban co muon thay doi mon an nao khac khong? (Co/Khong): ";
+			cin >> x;
 
+			if (x != "Co" && x != "co" && x != "Khong" && x != "khong") {
+				cout << "Chi duoc nhap 'Co' hoac 'Khong'! Vui long nhap lai.\n";
+			}
+		} while (x != "Co" && x != "co" && x != "Khong" && x != "khong");
+
+		
 		if (x == "Co" || x == "co") {
 			cout << "Nhap stt mon an muon thay doi: ";
 			cin >> stt;
@@ -241,9 +263,9 @@ void Sort(Food_List& L) {
 	}
 }
 
-double Cal_Price(Food_List L) {
+long long Cal_Price(Food_List L) {
 	Node_Mon_An* P = L;
-	double tong = 0;
+	long long tong = 0;
 	while (P != NULL) {
 		tong += P->mon_an.gia * P->so_luong;
 		P = P->next;

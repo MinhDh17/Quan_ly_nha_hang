@@ -22,7 +22,7 @@ void Display_Hoa_Don_List(Hoa_Don_List H);
 //tìm kiếm hóa đơn theo stt
 Node_Hoa_Don* Search_Stt_Hoa_Don_List(Hoa_Don_List& H, int k);
 //tính doanh thu trong ngày
-double Cal_Price_Day(Hoa_Don_List H, int day, int month, int year);
+long long Cal_Price_Day(Hoa_Don_List H, int day, int month, int year);
 //thêm món vào hóa đơn có sẵn
 void Add_Existing_Bill(Hoa_Don_List& H, int stt_hoa_don);
 //Xóa hóa đơn

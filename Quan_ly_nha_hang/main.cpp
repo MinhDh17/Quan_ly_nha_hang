@@ -73,12 +73,16 @@ int main() {
 			int soluong_change;
 			cout << "Nhap stt hoa don muon sua: ";
 			cin >> stt_hoa_don;
-			cout << "Nhap stt mon an muon sua: ";
+			/*cout << "Nhap stt mon an muon sua: ";
 			cin >> stt_change;
 			cout << "Nhap so luong ban muon thay doi: ";
-			cin >> soluong_change;
+			cin >> soluong_change;*/
 
-			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don != NULL) {
+			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don) != NULL) {
+				cout << "Nhap stt mon an muon sua: ";
+				cin >> stt_change;
+				cout << "Nhap so luong ban muon thay doi: ";
+				cin >> soluong_change;
 				Change(Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don, stt_change, soluong_change);
 				cout << "Thay doi thanh cong!\n";
 			}
@@ -90,15 +94,15 @@ int main() {
 			int k;
 			cout << "Nhap so thu tu hoa don muon xoa mon an: ";
 			cin >> stt_hoa_don;
-			cout << "Nhap stt mon an muon xoa: ";
-			cin >> k;
 
-			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don != NULL) {
+			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don) != NULL) {
+				cout << "Nhap stt mon an muon xoa: ";
+				cin >> k;
 				Delete(Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don, Search_STT_list(Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don, k));
 				cout << "Xoa mon thanh cong!\n";
 			}
 			else {
-				cout << "Khong tim thay mon an voi stt nay!\n";
+				cout << "Khong tim thay hoa don voi stt nay!\n";
 			}
 			break;
 
@@ -106,7 +110,7 @@ int main() {
 			cout << "Nhap so thu tu hoa don muon sap xep mon an: ";
 			cin >> stt_hoa_don;
 
-			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don != NULL) {
+			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don) != NULL) {
 				Sort(Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don);
 				cout << "Sap xep thanh cong!\n";
 				Display(Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don);

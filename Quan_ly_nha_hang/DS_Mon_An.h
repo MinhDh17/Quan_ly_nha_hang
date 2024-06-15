@@ -39,4 +39,4 @@ void Change(Food_List& L, int stt, int soluong_change); //sửa món
 
 void Sort(Food_List& L); //sắp xếp theo giá tiền
 
-double Cal_Price(Food_List L); //tính tiền
+long long Cal_Price(Food_List L); //tính tiền

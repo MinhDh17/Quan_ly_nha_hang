@@ -53,8 +53,8 @@ Node_Hoa_Don* Search_Stt_Hoa_Don_List(Hoa_Don_List& H, int k) {
 	return NULL;
 }
 
-double Cal_Price_Day(Hoa_Don_List H, int day, int month, int year) {
-	double sum = 0;
+long long Cal_Price_Day(Hoa_Don_List H, int day, int month, int year) {
+	long long sum = 0;
 	Node_Hoa_Don* P = H;
 	while (P != NULL) {
 		Node_Mon_An* T = P->hoa_don;
