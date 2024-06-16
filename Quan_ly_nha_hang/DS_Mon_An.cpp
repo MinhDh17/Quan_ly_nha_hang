@@ -32,7 +32,7 @@ Node_Mon_An* Search_STT_list(Food_List& L, int stt) {
 }
 
 bool Check_Date_Valid(int day, int month, int year) {
-	if (year < 0 || year > 2024) return false;
+	if (year < 2000) return false;
 	if (month < 1 || month > 12) return false;
 
 	int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
