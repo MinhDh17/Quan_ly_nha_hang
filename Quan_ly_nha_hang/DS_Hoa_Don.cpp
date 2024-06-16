@@ -56,15 +56,20 @@ Node_Hoa_Don* Search_Stt_Hoa_Don_List(Hoa_Don_List& H, int k) {
 long long Cal_Price_Day(Hoa_Don_List H, int day, int month, int year) {
 	long long sum = 0;
 	Node_Hoa_Don* P = H;
+	bool found = false;
 	while (P != NULL) {
 		Node_Mon_An* T = P->hoa_don;
 		while (T != NULL) {
 			if (T->day == day && T->month == month && T->year == year) {
 				sum += T->mon_an.gia * T->so_luong;
+				found = true;
 			}
 			T = T->next;
 		}
 		P = P->next;
+	}
+	if (!found) {
+		cout << "Khong co doanh thu ngay " << day << "/" << month << "/" << year << endl;
 	}
 	return sum;
 }

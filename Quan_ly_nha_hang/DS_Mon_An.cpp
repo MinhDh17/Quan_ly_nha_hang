@@ -32,7 +32,7 @@ Node_Mon_An* Search_STT_list(Food_List& L, int stt) {
 }
 
 bool Check_Date_Valid(int day, int month, int year) {
-	if (year < 0) return false;
+	if (year < 0 || year > 2024) return false;
 	if (month < 1 || month > 12) return false;
 
 	int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -228,7 +228,6 @@ void Change(Food_List& L, int stt, int soluong_change) {
 		Node_Mon_An* P = Search_STT_list(L, stt);
 		if (P != NULL) {
 			P->so_luong = soluong_change;
-			cout << "Thay doi thanh cong!\n";
 		}
 		else {
 			cout << "Khong co mon an voi stt nay trong danh sach\n";
