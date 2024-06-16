@@ -63,11 +63,11 @@ int main() {
 		case 2: {
 			cout << "Nhap stt hoa don muon them mon: ";
 			cin >> stt_hoa_don;
-			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don != NULL) {
+			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don) != NULL) {
 				Add_Existing_Bill(H, stt_hoa_don);
 			}
 			else {
-				cout << "Khong tim thay hoa don voi stt nay!";
+				cout << "Khong tim thay hoa don voi stt nay!\n";
 			}
 			break;
 		}
@@ -136,7 +136,7 @@ int main() {
 			cout << "Nhap so thu tu hoa don muon tinh tien: ";
 			cin >> stt_hoa_don;
 
-			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don != NULL) {
+			if (Search_Stt_Hoa_Don_List(H, stt_hoa_don) != NULL) {
 				cout << "Tong tien: " << Cal_Price(Search_Stt_Hoa_Don_List(H, stt_hoa_don)->hoa_don) << endl;
 			}
 			else {
