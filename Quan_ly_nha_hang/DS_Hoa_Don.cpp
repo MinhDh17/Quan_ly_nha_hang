@@ -117,7 +117,7 @@ void Add_Existing_Bill(Hoa_Don_List& H, int stt_hoa_don) {
 				InsertLast(L, Food, soluong, count_list, P->hoa_don->day, P->hoa_don->month, P->hoa_don->year);
 			}
 			else {
-				cout << "Khong co mon an nay!" << endl;
+				cout << "Khong co mon an voi stt nay!" << endl;
 			}
 			cout << "Ban co muon them mon an khac khong? (Co/Khong): ";
 			cin >> x;

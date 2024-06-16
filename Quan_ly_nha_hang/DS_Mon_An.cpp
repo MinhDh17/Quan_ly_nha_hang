@@ -31,7 +31,22 @@ Node_Mon_An* Search_STT_list(Food_List& L, int stt) {
 	return 0;
 }
 
-//int stt = 1;
+bool Check_Date_Valid(int day, int month, int year) {
+	if (year < 0) return false;
+	if (month < 1 || month > 12) return false;
+
+	int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	//năm nhuận
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+		days[1] = 29;
+	}
+
+	if (day < 1 || day > days[month - 1]) return false;
+
+	return true;
+}
+
 void InsertLast(Food_List& L, Mon_An x, int so_luong, int& stt, int day, int month, int year) {
 	//Kiểm tra trùng lặp
 	Node_Mon_An* E = Search_Ten(L, x.Ten_mon);
@@ -67,47 +82,57 @@ void Add(Food_List& L) {
 	string x;
 	int choose;
 	int day, month, year;
-	cout << "Nhap ngay thang nam tao hoa don (dd mm yyyy): ";
-	cin >> day >> month >> year;
 
+	do {
+		cout << "Nhap ngay thang nam tao hoa don (dd mm yyyy): ";
+		cin >> day >> month >> year;
+
+		if (!Check_Date_Valid(day, month, year)) {
+			cout << "Ngay thang nam khong hop le. Vui long nhap lai!\n";
+		}
+	} while (!Check_Date_Valid(day, month, year));
 	int stt = 1;
 
 	do {
-		cout << "Nhap stt mon an ban muon them: ";
-		cin >> choose;
+		bool valid_stt = false;
+		do {
+			cout << "Nhap stt mon an ban muon them: ";
+			cin >> choose;
 
-		Mon_An Menu[10] = {
-		{ 1, "Bun dau", 40000 },
-		{ 2, "Bun cha", 40000 },
-		{ 3, "Com rang", 35000 },
-		{ 4, "Nem nuong", 35000 },
-		{ 5, "Com tam", 45000},
-		{ 6, "Xoi", 25000},
-		{ 7, "Banh mi", 20000},
-		{ 8, "Pho bo", 35000},
-		{ 9, "Bun ca", 35000},
-		{ 10, "Bun bo hue", 40000},
-		};
+			Mon_An Menu[10] = {
+			{ 1, "Bun dau", 40000 },
+			{ 2, "Bun cha", 40000 },
+			{ 3, "Com rang", 35000 },
+			{ 4, "Nem nuong", 35000 },
+			{ 5, "Com tam", 45000},
+			{ 6, "Xoi", 25000},
+			{ 7, "Banh mi", 20000},
+			{ 8, "Pho bo", 35000},
+			{ 9, "Bun ca", 35000},
+			{ 10, "Bun bo hue", 40000},
+			};
 
-		bool found = 0;
-		Mon_An Food;
-		for (int i = 0; i < 10; i++) {
-			if (Menu[i].stt == choose) {
-				Food = Menu[i];
-				found = true;
-				break;
+			bool found = 0;
+			Mon_An Food;
+			for (int i = 0; i < 10; i++) {
+				if (Menu[i].stt == choose) {
+					Food = Menu[i];
+					found = true;
+					break;
+				}
 			}
-		}
 
-		if (found) {
-			int soluong;
-			cout << "Nhap so luong ban muon them: ";
-			cin >> soluong;
-			InsertLast(L, Food, soluong, stt, day, month, year);
-		}
-		else {
-			cout << "Khong co mon an nay!" << endl;
-		}
+			if (found) {
+				valid_stt = true;
+				int soluong;
+				cout << "Nhap so luong ban muon them: ";
+				cin >> soluong;
+				InsertLast(L, Food, soluong, stt, day, month, year);
+			}
+			else {
+				cout << "Khong co mon an voi stt nay!" << endl;
+			}
+		} while (!valid_stt);
 
 		do {
 			cout << "Ban co muon them mon an khac khong? (Co/Khong): ";

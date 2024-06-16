@@ -27,6 +27,8 @@ bool IsEmpty(Food_List L); //Kiểm tra rỗng
 Node_Mon_An* Search_Ten(Food_List& L, string ten); //Tìm kiếm theo tên món
 Node_Mon_An* Search_STT_list(Food_List& L, int stt); // Tìm kiếm theo stt
 
+//Kiểm tra ngày tháng năm
+bool Check_Date_Valid(int day, int month, int year);
 //Thêm món 
 void InsertLast(Food_List& L, Mon_An x, int so_luong, int& stt, int day, int month, int year);
 void Add(Food_List& L);
